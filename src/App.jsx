@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './App.css';
 
 function App() {
 	const [step, setStep] = useState(1);
@@ -24,9 +25,13 @@ function App() {
 	const handleCountPlus = () => {
 		setCount((prev) => count + step);
 	};
+
+	const handleCounts = (e) => {
+		setCount((count) => Number(e.target.value));
+	};
 	return (
-		<>
-			<div>
+		<div className='container'>
+			<div className='step-div'>
 				<input
 					type='range'
 					min={1}
@@ -36,9 +41,9 @@ function App() {
 				/>
 				<span>Step: {step}</span>
 			</div>
-			<div>
+			<div className='count-div'>
 				<button onClick={handleCountMinus}>-</button>
-				<span>Count: {count}</span>
+				<input type='text' value={count} onChange={handleCounts} />
 				<button onClick={handleCountPlus}>+</button>
 			</div>
 			{count === 0 ? (
@@ -48,7 +53,7 @@ function App() {
 					{count} days from today is {date.toDateString()}
 				</p>
 			)}
-		</>
+		</div>
 	);
 }
 
