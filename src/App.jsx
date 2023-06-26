@@ -4,6 +4,9 @@ function App() {
 	const [step, setStep] = useState(1);
 	const [count, setCount] = useState(0);
 
+	const date = new Date();
+	date.setDate(date.getDate() + count);
+
 	const handleStepMinus = () => {
 		setStep((prev) => step - 1);
 	};
@@ -29,7 +32,13 @@ function App() {
 				<span>Count: {count}</span>
 				<button onClick={handleCountPlus}>+</button>
 			</div>
-			<p>Today is Monday Jun 26 2023</p>
+			{count === 0 ? (
+				<p>Today is Monday {date.toDateString()}</p>
+			) : (
+				<p>
+					{count} days from today is {date.toDateString()}
+				</p>
+			)}
 		</>
 	);
 }
