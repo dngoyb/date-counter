@@ -2,12 +2,20 @@ import { useState } from 'react';
 
 function App() {
 	const [step, setStep] = useState(1);
+	const [count, setCount] = useState(0);
 
 	const handleStepMinus = () => {
 		setStep((prev) => step - 1);
 	};
 	const handleStepPlus = () => {
 		setStep((prev) => step + 1);
+	};
+
+	const handleCountMinus = () => {
+		setCount((prev) => count - step);
+	};
+	const handleCountPlus = () => {
+		setCount((prev) => count + step);
 	};
 	return (
 		<>
@@ -17,9 +25,9 @@ function App() {
 				<button onClick={handleStepPlus}>+</button>
 			</div>
 			<div>
-				<button>-</button>
-				<span>counter: 0</span>
-				<button>+</button>
+				<button onClick={handleCountMinus}>-</button>
+				<span>Count: {count}</span>
+				<button onClick={handleCountPlus}>+</button>
 			</div>
 			<p>Today is Monday Jun 26 2023</p>
 		</>
