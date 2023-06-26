@@ -7,11 +7,15 @@ function App() {
 	const date = new Date();
 	date.setDate(date.getDate() + count);
 
-	const handleStepMinus = () => {
-		setStep((prev) => step - 1);
-	};
-	const handleStepPlus = () => {
-		setStep((prev) => step + 1);
+	// const handleStepMinus = () => {
+	// 	setStep((prev) => step - 1);
+	// };
+	// const handleStepPlus = () => {
+	// 	setStep((prev) => step + 1);
+	// };
+
+	const handleSteps = (e) => {
+		setStep(Number(e.target.value));
 	};
 
 	const handleCountMinus = () => {
@@ -23,9 +27,14 @@ function App() {
 	return (
 		<>
 			<div>
-				<button onClick={handleStepMinus}>-</button>
+				<input
+					type='range'
+					min={1}
+					max={10}
+					value={step}
+					onChange={handleSteps}
+				/>
 				<span>Step: {step}</span>
-				<button onClick={handleStepPlus}>+</button>
 			</div>
 			<div>
 				<button onClick={handleCountMinus}>-</button>
